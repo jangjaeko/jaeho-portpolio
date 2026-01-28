@@ -1,3 +1,11 @@
+.react-aria-ListBoxItem {
+  color: black;
+
+  &[data-selected] {
+    background: black;
+    color: white;
+  }
+}
 .select {
   display: inline-flex;
   flex-direction: column;

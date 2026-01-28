@@ -1,33 +1,21 @@
 import "./App.css";
-import {
-  Button,
-  Label,
-  ListBox,
-  ListBoxItem,
-  Popover,
-  Select,
-  SelectValue,
-} from "react-aria-components";
+import { Route } from "react-router-dom";
+import Home from "./pages/home";
+import Projects from "./pages/projects";
+import Experiences from "./pages/experiences";
 import { useState } from "react";
+import { Routes } from "react-router";
+import NotFound from "./pages/notFound";
 
 function App() {
-  const [count, setCount] = useState(0);
   return (
     <>
-      <Select className="select">
-        <Label className="label">Favorite Animal</Label>
-        <Button className="trigger">
-          <SelectValue />
-        </Button>
-
-        <Popover className="popover">
-          <ListBox className="listbox">
-            <ListBoxItem className="item">Cat</ListBoxItem>
-            <ListBoxItem className="item">Dog</ListBoxItem>
-            <ListBoxItem className="item">Kangaroo</ListBoxItem>
-          </ListBox>
-        </Popover>
-      </Select>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/projects/:id" element={<Projects />} />
+        <Route path="/experiences/:id" element={<Experiences />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </>
   );
 }
