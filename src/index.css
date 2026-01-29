@@ -124,3 +124,17 @@
     @apply bg-background text-foreground;
   }
 }
+
+.Header {
+  @apply flex items-center justify-between p-4;
+  color: white;
+  opacity: 0.95;
+}
+.r-header-section {
+  @apply flex items-center gap-4;
+}
+
+.header-menu-btn {
+  /* 마우스 포인터 올렸을때 색 바뀌도록, */
+  @apply cursor-pointer hover:text-accent;
+}
