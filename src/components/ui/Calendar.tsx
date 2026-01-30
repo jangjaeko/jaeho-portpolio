@@ -54,7 +54,7 @@ export function Calendar<T extends DateValue>(
 }
 
 export function CalendarHeader() {
-  let {direction} = useLocale();
+  const {direction} = useLocale();
 
   return (
     <header className="flex items-center gap-1 pb-4 px-1 border-box">

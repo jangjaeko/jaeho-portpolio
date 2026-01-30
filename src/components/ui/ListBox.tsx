@@ -15,7 +15,7 @@ import {
 import { tv } from 'tailwind-variants';
 import { composeTailwindRenderProps, focusRing } from '@/lib/react-aria-utils';
 
-interface ListBoxProps<T> extends Omit<AriaListBoxProps<T>, 'layout' | 'orientation'> {}
+type ListBoxProps<T> = Omit<AriaListBoxProps<T>, 'layout' | 'orientation'>;
 
 export function ListBox<T extends object>(
   { children, ...props }: ListBoxProps<T>
@@ -42,7 +42,7 @@ export const itemStyles = tv({
 });
 
 export function ListBoxItem(props: ListBoxItemProps) {
-  let textValue = props.textValue || (typeof props.children === 'string' ? props.children : undefined);
+  const textValue = props.textValue || (typeof props.children === 'string' ? props.children : undefined);
   return (
     <AriaListBoxItem {...props} textValue={textValue} className={itemStyles}>
       {composeRenderProps(props.children, children => <>
@@ -77,7 +77,7 @@ export const dropdownItemStyles = tv({
 });
 
 export function DropdownItem(props: ListBoxItemProps) {
-  let textValue = props.textValue || (typeof props.children === 'string' ? props.children : undefined);
+  const textValue = props.textValue || (typeof props.children === 'string' ? props.children : undefined);
   return (
     <AriaListBoxItem {...props} textValue={textValue} className={dropdownItemStyles}>
       {composeRenderProps(props.children, (children, {isSelected}) => <>
@@ -94,7 +94,7 @@ export function DropdownItem(props: ListBoxItemProps) {
 
 export interface DropdownSectionProps<T> extends SectionProps<T> {
   title?: string
-  items?: any
+  items?: Iterable<T>
 }
 
 export function DropdownSection<T extends object>(props: DropdownSectionProps<T>) {

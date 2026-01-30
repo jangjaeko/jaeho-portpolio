@@ -73,12 +73,12 @@ export function Slider<T extends number | number[]>(
             // Single thumb, render fill from the end
             ? <div
                 className={fillStyles(renderProps)}
-                style={{'--size': state.getThumbPercent(0) * 100 + '%'} as any} />
+                style={{'--size': state.getThumbPercent(0) * 100 + '%'} as React.CSSProperties} />
             : state.values.length === 2
               // Range slider, render fill between the thumbs
               ? <div
                   className={fillStyles(renderProps)}
-                  style={{'--start': state.getThumbPercent(0) * 100 + '%', '--size': (state.getThumbPercent(1) - state.getThumbPercent(0)) * 100 + '%'} as any} />
+                  style={{'--start': state.getThumbPercent(0) * 100 + '%', '--size': (state.getThumbPercent(1) - state.getThumbPercent(0)) * 100 + '%'} as React.CSSProperties} />
               : null}
           {state.values.map((_, i) => <SliderThumb key={i} index={i} aria-label={thumbLabels?.[i]} className={thumbStyles} />)}
         </>}

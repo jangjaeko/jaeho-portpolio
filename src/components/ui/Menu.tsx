@@ -28,7 +28,7 @@ export function Menu<T extends object>(props: MenuProps<T>) {
 }
 
 export function MenuItem(props: MenuItemProps) {
-  let textValue = props.textValue || (typeof props.children === 'string' ? props.children : undefined);
+  const textValue = props.textValue || (typeof props.children === 'string' ? props.children : undefined);
   return (
     <AriaMenuItem textValue={textValue} {...props} className={dropdownItemStyles}>
       {composeRenderProps(props.children, (children, {selectionMode, isSelected, hasSubmenu}) => <>
@@ -54,7 +54,7 @@ export function MenuSeparator(props: SeparatorProps) {
 
 export interface MenuSectionProps<T> extends AriaMenuSectionProps<T> {
   title?: string
-  items?: any
+  items?: Iterable<T>
 }
 
 export function MenuSection<T extends object>(props: MenuSectionProps<T>) {
@@ -73,7 +73,7 @@ interface MenuTriggerProps extends AriaMenuTriggerProps {
 }
 
 export function MenuTrigger(props: MenuTriggerProps) {
-  let [trigger, menu] = React.Children.toArray(props.children) as [React.ReactElement, React.ReactElement];
+  const [trigger, menu] = React.Children.toArray(props.children) as [React.ReactElement, React.ReactElement];
   return (
     <AriaMenuTrigger {...props}>
       {trigger}
@@ -87,7 +87,7 @@ export function MenuTrigger(props: MenuTriggerProps) {
 export function SubmenuTrigger(
   props: SubmenuTriggerProps
 ) {
-  let [trigger, menu] = React.Children.toArray(props.children) as [React.ReactElement, React.ReactElement];
+  const [trigger, menu] = React.Children.toArray(props.children) as [React.ReactElement, React.ReactElement];
   return (
     <AriaSubmenuTrigger {...props}>
       {trigger}

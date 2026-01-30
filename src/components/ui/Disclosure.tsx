@@ -50,7 +50,7 @@ export interface DisclosureHeaderProps {
 }
 
 export function DisclosureHeader({ children }: DisclosureHeaderProps) {
-  let { isExpanded } = useContext(DisclosureStateContext)!;
+  const { isExpanded } = useContext(DisclosureStateContext)!;
   return (
     <Heading className="text-lg font-semibold m-0">
       <Button
