@@ -6,7 +6,7 @@ export default function Header() {
     }
   };
   return (
-    <header className="Header bg-linear-to-r from-teal-300 to-cyan-500  p-12 w-full">
+    <header className="Header bg-linear-to-r from-teal-300 to-cyan-500  p-24 w-full">
       <div className="l-header-section">Logo</div>
       <div className="r-header-section">
         <div

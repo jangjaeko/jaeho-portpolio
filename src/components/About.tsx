@@ -1,31 +1,5 @@
 import "./About.css";
-
-const aboutData = {
-  name: "Jaeho Chang",
-  location: "Vancouver, Canada",
-  title: "Frontend Engineer",
-  summary:
-    "Product-focused Frontend Engineer with 4+ years of full-cycle development experience, delivering production-ready applications using React, Next.js, and TypeScript. Proven ability to take end-to-end ownership, quickly adapt to new tools, and drive features from concept to launch in high-velocity startup environments.",
-  skills: {
-    languages: ["Python", "JavaScript", "TypeScript", "HTML", "CSS", "C"],
-    frameworks: ["ReactJS", "NextJS", "React-Native", "Node"],
-    databases: ["MySQL", "Firebase", "Supabase"],
-    tools: ["Docker", "Github", "Sentry", "Slack", "Notion", "Figma"],
-  },
-  awards: [
-    { text: "Didim-stone R&D Grant Recipient", year: "2024" },
-    { text: "Korea Pre-startup Package Program", year: "2023" },
-    { text: "Start-up Camp 1st Prize", year: "2021, 2023" },
-    { text: "Coding Challenge Award", year: "2017" },
-  ],
-  education: {
-    school: "Sejong University",
-    location: "Seoul, South Korea",
-    degree: "B.S. Computer Software Engineering",
-    period: "2016 - 2022",
-    highlight: "Student President, Software Convergence College (2020)",
-  },
-};
+import { AboutData } from "@/data/About";
 
 export default function About() {
   return (
@@ -37,11 +11,11 @@ export default function About() {
         </div>
 
         <p className="hero-greeting">Hello, I'm</p>
-        <h1 className="hero-name">{aboutData.name}</h1>
+        <h1 className="hero-name">{AboutData.name}</h1>
 
         <div className="hero-title">
           <span className="hero-title-dot" />
-          <span>{aboutData.title}</span>
+          <span>{AboutData.title}</span>
           <span className="hero-title-dot" />
         </div>
 
@@ -60,10 +34,10 @@ export default function About() {
               d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
             />
           </svg>
-          {aboutData.location}
+          {AboutData.location}
         </span>
 
-        <p className="hero-summary">{aboutData.summary}</p>
+        <p className="hero-summary">{AboutData.summary}</p>
       </div>
 
       {/* Bento Grid */}
@@ -94,7 +68,7 @@ export default function About() {
             <div className="skill-row">
               <span className="skill-label">Languages</span>
               <div className="skill-chips">
-                {aboutData.skills.languages.map((skill) => (
+                {AboutData.skills.languages.map((skill) => (
                   <span key={skill} className="skill-chip">
                     {skill}
                   </span>
@@ -105,7 +79,7 @@ export default function About() {
             <div className="skill-row">
               <span className="skill-label">Frameworks</span>
               <div className="skill-chips">
-                {aboutData.skills.frameworks.map((skill) => (
+                {AboutData.skills.frameworks.map((skill) => (
                   <span key={skill} className="skill-chip">
                     {skill}
                   </span>
@@ -116,7 +90,7 @@ export default function About() {
             <div className="skill-row">
               <span className="skill-label">Databases</span>
               <div className="skill-chips">
-                {aboutData.skills.databases.map((skill) => (
+                {AboutData.skills.databases.map((skill) => (
                   <span key={skill} className="skill-chip">
                     {skill}
                   </span>
@@ -127,7 +101,7 @@ export default function About() {
             <div className="skill-row">
               <span className="skill-label">Tools</span>
               <div className="skill-chips">
-                {aboutData.skills.tools.map((skill) => (
+                {AboutData.skills.tools.map((skill) => (
                   <span key={skill} className="skill-chip">
                     {skill}
                   </span>
@@ -160,8 +134,8 @@ export default function About() {
           </div>
 
           <div className="education-content">
-            <h3 className="edu-school">{aboutData.education.school}</h3>
-            <p className="edu-degree">{aboutData.education.degree}</p>
+            <h3 className="edu-school">{AboutData.education.school}</h3>
+            <p className="edu-degree">{AboutData.education.degree}</p>
 
             <div className="edu-meta">
               <span className="edu-meta-item">
@@ -173,7 +147,7 @@ export default function About() {
                     d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                   />
                 </svg>
-                {aboutData.education.period}
+                {AboutData.education.period}
               </span>
               <span className="edu-meta-item">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -184,14 +158,14 @@ export default function About() {
                     d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
                   />
                 </svg>
-                {aboutData.education.location}
+                {AboutData.education.location}
               </span>
             </div>
 
             <div className="edu-highlight">
               <p className="edu-highlight-label">Leadership</p>
               <p className="edu-highlight-text">
-                {aboutData.education.highlight}
+                {AboutData.education.highlight}
               </p>
             </div>
           </div>
@@ -220,7 +194,7 @@ export default function About() {
           </div>
 
           <div className="awards-list">
-            {aboutData.awards.map((award, idx) => (
+            {AboutData.awards.map((award, idx) => (
               <div key={idx} className="award-row">
                 <div className="award-badge">
                   <svg
