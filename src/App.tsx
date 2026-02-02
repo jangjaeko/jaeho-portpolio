@@ -1,7 +1,6 @@
 import "./App.css";
 import { Route } from "react-router-dom";
 import Home from "./pages/home";
-import Projects from "./pages/projects";
 import Experiences from "./pages/experiences";
 import Header from "./components/Header";
 import { Routes } from "react-router";
@@ -16,7 +15,6 @@ function App() {
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/projects/:id" element={<Projects />} />
         <Route path="/experiences/:id" element={<Experiences />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
