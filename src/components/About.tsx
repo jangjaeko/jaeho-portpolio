@@ -1,11 +1,21 @@
 import "./About.css";
 import { AboutData } from "@/data/About";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export default function About() {
+  const { ref: heroRef, isVisible: heroVisible } = useScrollAnimation<HTMLDivElement>();
+  const { ref: skillsRef, isVisible: skillsVisible } = useScrollAnimation<HTMLDivElement>();
+  const { ref: educationRef, isVisible: educationVisible } = useScrollAnimation<HTMLDivElement>();
+  const { ref: awardsRef, isVisible: awardsVisible } = useScrollAnimation<HTMLDivElement>();
+  const { ref: footerRef, isVisible: footerVisible } = useScrollAnimation<HTMLDivElement>();
+
   return (
     <section id="About" className="about-section">
       {/* Hero Introduction */}
-      <div className="max-w-5xl mx-auto about-hero">
+      <div
+        ref={heroRef}
+        className={`max-w-5xl mx-auto about-hero slide-in-section ${heroVisible ? "visible" : ""}`}
+      >
         <div className="hero-avatar">
           <div className="hero-avatar-inner">JC</div>
         </div>
@@ -43,7 +53,10 @@ export default function About() {
       {/* Bento Grid */}
       <div className="max-w-5xl mx-auto bento-grid">
         {/* Skills Card - Full Width */}
-        <div className="bento-card bento-skills">
+        <div
+          ref={skillsRef}
+          className={`bento-card bento-skills slide-in-section ${skillsVisible ? "visible" : ""}`}
+        >
           <div className="card-header">
             <div className="card-icon card-icon-skills">
               <svg
@@ -112,7 +125,10 @@ export default function About() {
         </div>
 
         {/* Education Card */}
-        <div className="bento-card bento-education">
+        <div
+          ref={educationRef}
+          className={`bento-card bento-education slide-in-section ${educationVisible ? "visible" : ""}`}
+        >
           <div className="card-header">
             <div className="card-icon card-icon-education">
               <svg
@@ -172,7 +188,10 @@ export default function About() {
         </div>
 
         {/* Awards Card */}
-        <div className="bento-card bento-awards">
+        <div
+          ref={awardsRef}
+          className={`bento-card bento-awards slide-in-section ${awardsVisible ? "visible" : ""}`}
+        >
           <div className="card-header">
             <div className="card-icon card-icon-awards">
               <svg
@@ -221,7 +240,10 @@ export default function About() {
       </div>
 
       {/* Footer */}
-      <div className="max-w-5xl mx-auto about-footer">
+      <div
+        ref={footerRef}
+        className={`max-w-5xl mx-auto about-footer slide-in-section ${footerVisible ? "visible" : ""}`}
+      >
         <div className="footer-line">
           <div className="footer-line-segment" />
           <div className="footer-diamond" />

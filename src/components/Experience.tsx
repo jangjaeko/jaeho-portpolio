@@ -1,15 +1,24 @@
 import React from "react";
 import { experiences } from "@/data/experiences";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import "./Experience.css";
 
 export default function Experience() {
   const featuredExperiences = experiences.filter((exp) => exp.featured);
   const otherExperiences = experiences.filter((exp) => !exp.featured);
 
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation<HTMLDivElement>();
+  const { ref: featuredRef, isVisible: featuredVisible } = useScrollAnimation<HTMLDivElement>();
+  const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation<HTMLDivElement>();
+  const { ref: timelineRef, isVisible: timelineVisible } = useScrollAnimation<HTMLDivElement>();
+
   return (
     <section id="Experience" className="experience-section">
       {/* Section Header */}
-      <div className="max-w-6xl mx-auto mb-16 text-left">
+      <div
+        ref={headerRef}
+        className={`max-w-6xl mx-auto mb-16 text-left slide-in-section ${headerVisible ? "visible" : ""}`}
+      >
         <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-cyan-500 mb-4">
           Experience
         </h2>
@@ -17,8 +26,12 @@ export default function Experience() {
       </div>
 
       {/* Featured Experience */}
-      {featuredExperiences.map((exp) => (
-        <div key={exp.id} className="max-w-6xl mx-auto mb-8">
+      {featuredExperiences.map((exp, index) => (
+        <div
+          key={exp.id}
+          ref={index === 0 ? featuredRef : undefined}
+          className={`max-w-6xl mx-auto mb-8 slide-in-section ${featuredVisible ? "visible" : ""}`}
+        >
           <div className="glass-card glass-card-featured group p-8">
             <div className="glow-effect" />
             <div className="flex flex-col md:flex-row gap-6 text-left">
@@ -56,7 +69,10 @@ export default function Experience() {
       ))}
 
       {/* Experience Grid */}
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div
+        ref={gridRef}
+        className={`max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 slide-in-section ${gridVisible ? "visible" : ""}`}
+      >
         {otherExperiences.map((exp) => (
           <div key={exp.id} className="glass-card group p-6">
             <div className="glow-effect" />
@@ -91,7 +107,10 @@ export default function Experience() {
       </div>
 
       {/* Timeline Indicator */}
-      <div className="max-w-6xl mx-auto mt-16 flex items-center justify-center gap-4">
+      <div
+        ref={timelineRef}
+        className={`max-w-6xl mx-auto mt-16 flex items-center justify-center gap-4 slide-in-section ${timelineVisible ? "visible" : ""}`}
+      >
         <div className="h-px flex-1 bg-gradient-to-r from-transparent via-teal-500/30 to-transparent" />
         <div className="timeline-badge">Building products since 2021</div>
         <div className="h-px flex-1 bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />

@@ -1,9 +1,18 @@
 import { useEffect } from "react";
 import { useForm, ValidationError } from "@formspree/react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import "./Contact.css";
 
 export default function Contact() {
   const [state, handleSubmit] = useForm("xrelkwye");
+  const { ref: headerRef, isVisible: headerVisible } =
+    useScrollAnimation<HTMLDivElement>();
+  const { ref: linksRef, isVisible: linksVisible } =
+    useScrollAnimation<HTMLDivElement>({ rootMargin: "0px 0px -100px 0px" });
+  const { ref: formRef, isVisible: formVisible } =
+    useScrollAnimation<HTMLDivElement>({ rootMargin: "0px 0px -100px 0px" });
+  const { ref: footerRef, isVisible: footerVisible } =
+    useScrollAnimation<HTMLDivElement>();
 
   useEffect(() => {
     if (state.succeeded) {
@@ -68,7 +77,12 @@ export default function Contact() {
 
       <section id="Contact" className="contact-section">
       {/* Section Header */}
-      <div className="max-w-6xl mx-auto mb-16 text-center">
+      <div
+        ref={headerRef}
+        className={`max-w-6xl mx-auto mb-16 text-center slide-in-section ${
+          headerVisible ? "visible" : ""
+        }`}
+      >
         <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-cyan-500 mb-4">
           Contact
         </h2>
@@ -81,7 +95,12 @@ export default function Contact() {
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Contact Links */}
-          <div className="contact-glass-card p-8">
+          <div
+            ref={linksRef}
+            className={`contact-glass-card p-8 slide-in-left ${
+              linksVisible ? "visible" : ""
+            }`}
+          >
             <div className="glow-effect" />
             <h3 className="text-2xl font-semibold text-white mb-8">
               Get in Touch
@@ -203,7 +222,12 @@ export default function Contact() {
           </div>
 
           {/* Contact Form */}
-          <div className="contact-glass-card p-8">
+          <div
+            ref={formRef}
+            className={`contact-glass-card p-8 slide-in-right ${
+              formVisible ? "visible" : ""
+            }`}
+          >
             <div className="glow-effect" />
             <h3 className="text-2xl font-semibold text-white mb-8">
               Send a Message
@@ -298,7 +322,12 @@ export default function Contact() {
       </div>
 
       {/* Bottom Decoration */}
-      <div className="max-w-6xl mx-auto mt-16 flex items-center justify-center gap-4">
+      <div
+        ref={footerRef}
+        className={`max-w-6xl mx-auto mt-16 flex items-center justify-center gap-4 slide-in-section ${
+          footerVisible ? "visible" : ""
+        }`}
+      >
         <div className="h-px flex-1 bg-gradient-to-r from-transparent via-teal-500/30 to-transparent" />
         <div className="contact-badge">Let's build something together</div>
         <div className="h-px flex-1 bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />

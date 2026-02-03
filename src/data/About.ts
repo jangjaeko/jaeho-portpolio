@@ -11,9 +11,9 @@ export const AboutData = {
     tools: ["Docker", "Github", "Sentry", "Slack", "Notion", "Figma"],
   },
   awards: [
-    { text: "Didim-stone R&D Grant Recipient", year: "2024" },
-    { text: "Korea Pre-startup Package Program", year: "2023" },
-    { text: "Start-up Camp 1st Prize", year: "2021, 2023" },
+    { text: "Didim-stone R&D Grant Recipient", year: "2025" },
+    { text: "Korea Pre-startup Package Program", year: "2024" },
+    { text: "Start-up Camp 1st Prize", year: "2021, 2024" },
     { text: "Coding Challenge Award", year: "2017" },
   ],
   education: {

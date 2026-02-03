@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { projects, Project as ProjectType } from "@/data/projects";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import ProjectModal from "./ProjectModal";
 import "./Project.css";
 
@@ -7,11 +8,20 @@ export default function Project() {
   const [selectedProject, setSelectedProject] = useState<ProjectType | null>(
     null
   );
+  const { ref: headerRef, isVisible: headerVisible } =
+    useScrollAnimation<HTMLDivElement>();
+  const { ref: gridRef, isVisible: gridVisible } =
+    useScrollAnimation<HTMLDivElement>({ rootMargin: "0px 0px -100px 0px" });
 
   return (
     <section id="Project" className="project-section">
       {/* Section Header */}
-      <div className="max-w-6xl mx-auto mb-16 text-left">
+      <div
+        ref={headerRef}
+        className={`max-w-6xl mx-auto mb-16 text-left slide-in-section ${
+          headerVisible ? "visible" : ""
+        }`}
+      >
         <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-cyan-500 mb-4">
           Projects
         </h2>
@@ -19,11 +29,17 @@ export default function Project() {
       </div>
 
       {/* Projects Grid */}
-      <div className="max-w-6xl mx-auto project-grid">
-        {projects.map((project) => (
+      <div
+        ref={gridRef}
+        className={`max-w-6xl mx-auto project-grid ${
+          gridVisible ? "visible" : ""
+        }`}
+      >
+        {projects.map((project, index) => (
           <div
             key={project.id}
-            className="project-card group"
+            className="project-card group slide-in-card"
+            style={{ transitionDelay: `${index * 150}ms` }}
             onClick={() => setSelectedProject(project)}
           >
             <div className="project-image-wrapper">

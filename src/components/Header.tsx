@@ -21,8 +21,18 @@ export default function Header() {
         >
           Experience
         </div>
-        <div className="header-menu-btn">Project</div>
-        <div className="header-menu-btn">Contact</div>
+        <div
+          className="header-menu-btn"
+          onClick={() => scrollToSection("Project")}
+        >
+          Project
+        </div>
+        <div
+          className="header-menu-btn"
+          onClick={() => scrollToSection("Contact")}
+        >
+          Contact
+        </div>
       </div>
     </header>
   );
