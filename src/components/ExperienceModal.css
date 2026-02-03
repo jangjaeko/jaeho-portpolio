@@ -1,0 +1,272 @@
+/* Modal Backdrop */
+.exp-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  padding: 1rem;
+  animation: expFadeIn 0.2s ease-out;
+}
+
+@keyframes expFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal Container */
+.exp-modal-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  max-height: 90vh;
+  background: rgba(17, 24, 39, 0.95);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  animation: expSlideUp 0.3s ease-out;
+}
+
+@keyframes expSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Close Button */
+.exp-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.exp-modal-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+/* Modal Content */
+.exp-modal-content {
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@media (min-width: 768px) {
+  .exp-modal-content {
+    flex-direction: row;
+    overflow: hidden;
+  }
+}
+
+/* Image Section */
+.exp-modal-image-section {
+  flex-shrink: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 768px) {
+  .exp-modal-image-section {
+    width: 45%;
+    max-height: 90vh;
+    overflow: hidden;
+  }
+}
+
+.exp-modal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Info Section */
+.exp-modal-info-section {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .exp-modal-info-section {
+    max-height: 90vh;
+  }
+}
+
+/* Header */
+.exp-modal-header {
+  margin-bottom: 1.5rem;
+}
+
+.exp-modal-company {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: transparent;
+  background: linear-gradient(to right, rgb(94, 234, 212), rgb(34, 211, 238));
+  background-clip: text;
+  -webkit-background-clip: text;
+  margin-bottom: 0.25rem;
+}
+
+@media (min-width: 768px) {
+  .exp-modal-company {
+    font-size: 1.75rem;
+  }
+}
+
+.exp-modal-role {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #e5e7eb;
+  margin-bottom: 0.5rem;
+}
+
+.exp-modal-period {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(34, 211, 238, 0.8);
+  padding: 0.25rem 0.75rem;
+  background: rgba(34, 211, 238, 0.1);
+  border-radius: 9999px;
+  border: 1px solid rgba(34, 211, 238, 0.2);
+}
+
+/* Subtitle */
+.exp-modal-subtitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(94, 234, 212, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+/* Description */
+.exp-modal-description {
+  margin-bottom: 1.5rem;
+}
+
+.exp-modal-description p {
+  color: #d1d5db;
+  line-height: 1.7;
+}
+
+/* Responsibilities */
+.exp-modal-responsibilities {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.exp-modal-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.exp-modal-list li {
+  position: relative;
+  padding-left: 1.25rem;
+  color: #9ca3af;
+  line-height: 1.7;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.exp-modal-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  background: linear-gradient(to right, rgb(94, 234, 212), rgb(34, 211, 238));
+  border-radius: 50%;
+}
+
+.exp-modal-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* Achievements */
+.exp-modal-achievements {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: rgba(20, 184, 166, 0.05);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(20, 184, 166, 0.15);
+}
+
+.exp-modal-achievement-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.exp-modal-achievement-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  color: #d1d5db;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.exp-modal-achievement-list li:last-child {
+  margin-bottom: 0;
+}
+
+.exp-modal-achievement-icon {
+  flex-shrink: 0;
+  color: rgb(94, 234, 212);
+  margin-top: 0.125rem;
+}
+
+/* Skills */
+.exp-modal-skills {
+  margin-top: auto;
+}
+
+.exp-modal-skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.exp-modal-skill-tag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.375rem 0.875rem;
+  border-radius: 9999px;
+  color: rgba(94, 234, 212, 0.9);
+  background: rgba(20, 184, 166, 0.15);
+  border: 1px solid rgba(20, 184, 166, 0.25);
+}

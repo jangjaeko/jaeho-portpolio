@@ -1,9 +1,11 @@
-import React from "react";
-import { experiences } from "@/data/experiences";
+import { useState } from "react";
+import { experiences, Experience as ExperienceType } from "@/data/experiences";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import ExperienceModal from "./ExperienceModal";
 import "./Experience.css";
 
 export default function Experience() {
+  const [selectedExperience, setSelectedExperience] = useState<ExperienceType | null>(null);
   const featuredExperiences = experiences.filter((exp) => exp.featured);
   const otherExperiences = experiences.filter((exp) => !exp.featured);
 
@@ -32,7 +34,10 @@ export default function Experience() {
           ref={index === 0 ? featuredRef : undefined}
           className={`max-w-6xl mx-auto mb-8 slide-in-section ${featuredVisible ? "visible" : ""}`}
         >
-          <div className="glass-card glass-card-featured group p-8">
+          <div
+            className="glass-card glass-card-featured group p-8 cursor-pointer"
+            onClick={() => setSelectedExperience(exp)}
+          >
             <div className="glow-effect" />
             <div className="flex flex-col md:flex-row gap-6 text-left">
               <div className="logo-container logo-container-lg">
@@ -74,7 +79,11 @@ export default function Experience() {
         className={`max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 slide-in-section ${gridVisible ? "visible" : ""}`}
       >
         {otherExperiences.map((exp) => (
-          <div key={exp.id} className="glass-card group p-6">
+          <div
+            key={exp.id}
+            className="glass-card group p-6 cursor-pointer"
+            onClick={() => setSelectedExperience(exp)}
+          >
             <div className="glow-effect" />
             <div className="flex gap-4 text-left">
               <div className="logo-container logo-container-sm">
@@ -115,6 +124,14 @@ export default function Experience() {
         <div className="timeline-badge">Building products since 2021</div>
         <div className="h-px flex-1 bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
       </div>
+
+      {/* Experience Modal */}
+      {selectedExperience && (
+        <ExperienceModal
+          experience={selectedExperience}
+          onClose={() => setSelectedExperience(null)}
+        />
+      )}
     </section>
   );
 }
